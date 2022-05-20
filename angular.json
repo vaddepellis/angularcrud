@@ -124,5 +124,8 @@
       }
     }
   },
-  "defaultProject": "angularcrud"
+  "defaultProject": "angularcrud",
+  "cli": {
+    "analytics": "1ba85266-2e9f-4cc7-b63e-63fca50e91d4"
+  }
 }
