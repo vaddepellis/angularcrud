@@ -1,0 +1,23 @@
+<div class="row mt-5">
+    <div class="col-md-6 offset-3">
+        <form [formGroup]="adminRegistration">
+        <div class="form-group mb-1"><input formControlName="email" class="form-control" type="text" placeholder="Enter Email Address" /></div>
+        <div class="form-group mb-1"><input formControlName="password" class="form-control" type="password"  placeholder="Enter Password" /></div>
+        <div class="form-group mb-1"><input formControlName="cpassword" class="form-control" type="password"  placeholder="Enter Confirm Password" /></div>
+        <div formGroupName="address">
+        <div class="form-group mb-1"><input formControlName="city" class="form-control" type="text"  placeholder="Enter City" /></div>
+        <div class="form-group mb-1"><input formControlName="state" class="form-control" type="text"  placeholder="Enter State" /></div>
+        <div class="form-group mb-1"><input formControlName="postalCode" class="form-control" type="text"  placeholder="Enter postalcode" /></div>
+        </div>
+        
+        <div class="form-group mb-1">
+            <button type="submit" class="btn btn-primary">Register</button>
+            <button (click)="LoadApi()" type="button" class="btn btn-secondary m-2">Load Data</button>
+        </div>
+        <div class="form-group mb-1"></div>
+        </form>
+    </div>
+</div>
+<div class="row">
+    {{adminRegistration.value | json}}
+</div>
