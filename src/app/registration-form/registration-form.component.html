@@ -4,7 +4,7 @@
        {{regForm.value | json}}
     </div>
     <div class="col-md-12">
-        <form [formGroup]="regForm">
+        <form [formGroup]="regForm" (ngSubmit)="registrationSubmit(regForm)">
         <div class="row mt-1">
             <div class="col-md-3 col-sm-12"><label class="fw-bold" for="fname text-dark">First Name</label></div>
             <div class="col-md-6 col-sm-12"><input formControlName="fname" type="text" class="form-control" id="fname"  /></div>
@@ -12,6 +12,10 @@
         <div class="row mt-1">
             <div class="col-md-3 col-sm-12"><label class="fw-bold" for="lname">Last Name</label></div>
             <div class="col-md-6 col-sm-12"><input formControlName="lname" fornm type="text" class="form-control" id="lname"  /></div>
+        </div>
+        <div class="row mt-1">
+            <div class="col-md-3 col-sm-12"><label class="fw-bold" for="age">Age</label></div>
+            <div class="col-md-6 col-sm-12"><input formControlName="age" fornm type="text" class="form-control" id="lname"  /></div>
         </div>
         <div class="row mt-1">
             <div class="col-md-3 col-sm-12"><label class="fw-bold" for="email">Email</label></div>
@@ -22,57 +26,64 @@
             <div class="col-md-6 col-sm-12"><input formControlName="mobile" type="text" class="form-control" id="mobile" /></div>
         </div>
         
-        <!-- <div class="row mt-1">
+        <div class="row mt-1">
             <div class="col-md-3 col-sm-12"><label class="fw-bold" for="state">State</label></div>
             <div class="col-md-6 col-sm-12">
-                <select class="form-control" name="state" id="state">
+                <select class="form-control" formControlName="state" id="state" (change)="stateChange($event)">
                     <option value="">--Select State--</option>
+                    <option *ngFor="let state of states ;let i = index;" value="{{state.state_id}}">{{state.state_name}}</option>
                 </select>
             </div>
         </div>
         <div class="row mt-1">
             <div class="col-md-3 col-sm-12"><label class="fw-bold" for="dist">District</label></div>
             <div class="col-md-6 col-sm-12">
-                <select class="form-control" name="dist" id="dist">
+                <select class="form-control" formControlName="district" id="dist" (change)="cityChange($event)">
                     <option value="">--Select District--</option>
+                    <option *ngFor="let d of districtList;let i = index;" value="{{d.district_id}}">{{d.district_name}}</option>
                 </select>
             </div>
         </div>
         <div class="row mt-1">
             <div class="col-md-3 col-sm-12"><label class="fw-bold" for="city">City</label></div>
             <div class="col-md-6 col-sm-12">
-                <select class="form-control" name="city" id="city">
-                    <option value="">--Select City--</option>
+                <select class="form-control" formControlName="city" id="city" >
+                    <option value="">--Select City --</option>
+                    <option *ngFor="let c of cityList" value="{{c.city_id}}">{{c.city_name}}</option>
                 </select>
             </div>
         </div>
         <div class="row mt-1">
             <div class="col-md-3 col-sm-12"><label class="fw-bold" for="gender">Gender</label></div>
             <div class="col-md-6 col-sm-12">
-                <input type="radio" value="male" name="male"><label class="mx-2">Male</label>       
-                <input type="radio" value="female" name="female"><label class="mx-2">Female</label>       
+                <input class="form-check-input" type="radio" value="male" formControlName="gender"><label class="mx-2">Male</label>       
+                <input class="form-check-input" type="radio" value="female" formControlName="gender"><label class="mx-2">Female</label>       
             </div>
         </div>
         <div class="row mt-1">
+            <div class="col-md-3 col-sm-12"><label class="fw-bold" for="pincode">Pincode</label></div>
+            <div class="col-md-6 col-sm-12"><input formControlName="pincode" type="text" class="form-control" id="pincode" /></div>
+        </div>
+        <!-- <div class="row mt-1">
             <div class="col-md-3 col-sm-12"><label class="fw-bold" for="hobbies">Hobbies</label></div>
             <div class="col-md-6 col-sm-12">
-                <input type="checkbox" /><label class="mx-2"> Sports</label>
-                <input type="checkbox" /><label class="mx-2"> Books</label>
-                <input type="checkbox" /><label class="mx-2"> Movies</label>
-                <input type="checkbox" /><label class="mx-2"> Travel</label>
+                <input formControlName="sports" class="form-check-input" type="checkbox" value="1" /><label class="mx-2"> Sports</label>
+                <input formControlName="books" class="form-check-input" type="checkbox" value="2" /><label class="mx-2"> Books</label>
+                <input formControlName="movies" class="form-check-input" type="checkbox" value="3" /><label class="mx-2"> Movies</label>
+                <input formControlName="travel" class="form-check-input" type="checkbox" value="4" /><label class="mx-2"> Travel</label>
             </div>
-        </div>
+        </div> -->
         <div class="row mt-1">
             <div class="col-md-3 col-sm-12 mt-5"><label class="fw-bold" for="upload">Profile Photo</label></div>
-            <div class="col-md-3 col-sm-12 mt-5"><input type="file" class="form-control" id="mobile" name="mobile" /></div>
+            <div class="col-md-3 col-sm-12 mt-5"><input type="file" class="form-control" id="mobile" formControlName="profile_pic" /></div>
             <div class="col-md-3 col-sm-12">
                 <img class="upload-image float-end" src="../../assets/images/user.png" alt="user" />
             </div>
-        </div> -->
+        </div>
         <div class="row mt-1 mb-5">
             
             <div class="offset-5">
-                <button class="btn btn-primary btn-lg" type="button">Submit</button>
+                <button class="btn btn-primary btn-lg" type="submit">Submit</button>
             </div>
         </div>
     </form>

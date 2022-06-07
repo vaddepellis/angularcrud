@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ReactiveFormsModule,FormGroup,FormControl,FormBuilder } from '@angular/forms';
+import { StudentsListService } from 'src/app/students-list.service';
+import { AdminInterface } from './adminInterface';
 @Component({
   selector: 'app-admin-register',
   templateUrl: './admin-register.component.html',
@@ -17,17 +19,17 @@ export class AdminRegisterComponent implements OnInit {
   //     postalCode:new FormControl('')
   //   })
   // });
-  constructor(private fb:FormBuilder) { }
+  constructor(private fb:FormBuilder,private studentService:StudentsListService) { }
   adminRegistration = this.fb.group({
     email:[''],
-    password:[],
-    cpassword:[],
-    address:this.fb.group({
-      city:[''],
-      state:[''],
-      postalCode:[]
+    password:[''],
+    // cpassword:[],
+    // address:this.fb.group({
+    //   city:[''],
+    //   state:[''],
+    //   postalCode:[]
 
-    })
+    // })
   })
 
   ngOnInit(): void {
@@ -35,11 +37,13 @@ export class AdminRegisterComponent implements OnInit {
   LoadApi(){
     this.adminRegistration.patchValue({
       email:'santhosh@gmail.com',
-      address:{
-        city:'Siricilla',
-        state:'Telangana',
-        postalCode:'505301'
-      }
+      password:'123456'
+    });
+  }
+  LoginRegister(data:any){
+    console.log(data);
+    this.studentService.LoginRegister(data.value).subscribe((res)=>{
+      console.log('responce'+res);
     });
   }
 }

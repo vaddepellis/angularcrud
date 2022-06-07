@@ -8,22 +8,16 @@
                 <td>Mobile</td>
                 <td>Email</td>
                 <td>Gender</td>
-                <td>State</td>
-                <td>District</td>
-                <td>City</td>
                 <td>Pincode</td>
             </tr>
             </thead>
             <tbody>
             <tr *ngFor="let student of studentData">
-                <td>{{student.name}}</td>
+                <td>{{student.fname}} {{student.lname}}</td>
                 <td>{{student.age}}</td>
                 <td>{{student.mobile}}</td>
                 <td>{{student.email}}</td>
                 <td>{{student.gender}}</td>
-                <td>{{student.state}}</td>
-                <td>{{student.district}}</td>
-                <td>{{student.city}}</td>
                 <td>{{student.pincode}}</td>
             </tr>
             </tbody>
